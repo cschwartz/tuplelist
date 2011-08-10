@@ -9,10 +9,19 @@ class TestTuplelist < MiniTest::Unit::TestCase
     end
   end
 
-  def test_add_unspecified_key_to_tuple
+  def test_add_unspecified_key_to_tuple_without_ignore
     tupleList = TupleList.new [:foo]
     assert_raises RuntimeError, "Unspecified key 'bar' entered" do
       tupleList[:bar] = "bar"
+    end
+  end
+
+  def test_add_unspecified_key_to_tuple_with_ignore
+    tupleList = TupleList.new [:foo], :ignore => true
+    begin
+      tupleList[:bar] = "bar"
+    rescue
+      assert
     end
   end
 

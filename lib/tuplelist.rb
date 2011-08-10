@@ -3,14 +3,16 @@ class TupleList
 
   include Enumerable
 
-  def initialize(required_keys)
+  def initialize(required_keys, args = {})
     @keys = required_keys
     @current_tuple = {}
-    @tuple_list = [@current_tuple] 
+    @tuple_list = [@current_tuple]
+
+    @ignore = args.delete :ignore || false
   end
 
   def []=(key, value)
-    raise "Unspecified key '#{key}' entered" unless @keys.include? key
+    raise "Unspecified key '#{key}' entered" unless @keys.include?(key) or @ignore
     @current_tuple[key] = value 
   end
 
