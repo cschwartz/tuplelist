@@ -18,7 +18,8 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/cschwartz/tuplelist"
   gem.license = "MIT"
   gem.summary = %Q{A list of hashes were each hash is guaranteed to have a predefined set of keys}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.description = %Q{Tuple-List provides a datastructure for a list of hashes were each hash has 
+    to be assigned a set of predefined keys before proceeding to the next hash.}
   gem.email = "christian@schwartz-raum.de"
   gem.authors = ["Christian Schwartz"]
   # dependencies defined in Gemfile
