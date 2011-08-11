@@ -8,10 +8,11 @@ class TupleList
     @current_tuple = {}
     @tuple_list = [@current_tuple]
 
-    @ignore = args.delete :ignore || false
+    @ignore = (args.delete :ignore) || false
   end
 
   def []=(key, value)
+    puts key, @ignore, @keys, '---'
     raise "Unspecified key '#{key}' entered" unless @keys.include?(key) or @ignore
     @current_tuple[key] = value 
   end
