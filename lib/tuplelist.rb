@@ -6,7 +6,7 @@ class TupleList
   def initialize(required_keys, args = {})
     @keys = required_keys
     @current_tuple = {}
-    @tuple_list = [@current_tuple]
+    @tuple_list = []
 
     @ignore = (args.delete :ignore) || false
   end
@@ -21,8 +21,8 @@ class TupleList
 
   def next
     raise "No keys for #{@current_tuple.keys | @keys} specified" unless @current_tuple.length == @keys.length
-    @current_tuple = {}
     @tuple_list << @current_tuple
+    @current_tuple = {}
   end
 
   def each

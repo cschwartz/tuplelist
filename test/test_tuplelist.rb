@@ -45,7 +45,7 @@ class TestTuplelist < MiniTest::Unit::TestCase
     tupleList[:foo] = "foo-2"
     tupleList[:bar] = "bar-2"
 
-    assert_each tupleList, [["foo-1", "bar-1"], ["foo-2", "bar-2"]]
+    assert_each tupleList, [["foo-1", "bar-1"]]
   end
 
   def test_get_keys
@@ -55,6 +55,8 @@ class TestTuplelist < MiniTest::Unit::TestCase
   end
 
   def assert_each(expected_enumerable, actual_enumerable, message = "Assertion failed")
+    raise MiniTest::Assertion.new("#{message}: objects are of different length.") unless expected_enumerable.count == actual_enumerable.count
+
     error_messages = []
     actual_enumerable.zip(expected_enumerable) do |actual_value, expected_value|
       error_messages << "'#{actual_value.to_s} does not match '#{expected_value.to_s}'" unless actual_value == expected_value
